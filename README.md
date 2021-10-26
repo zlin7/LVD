@@ -41,17 +41,17 @@ You would also need to download the data from the following websites and put the
 
 (All links are working as of 5/27/2021.)
 
-## 1. Preparing QM8 and QM9 datasets
+## 1. Prepare QM8 and QM9 datasets
 The first step is to run the chemprop models and cache down the predictions (and embeddings).
 The original implementation is [here](https://github.com/chemprop/chemprop). 
 However, please use [this branch](https://github.com/zlin7/chemprop/tree/zl), which contains some modifications for baselines to work.
 Then, specify the path in `DEPENDENCY_PATHS` in`extern.py`
 
 To run the chemprop models, run `python -m data.preprocessing_qm_datasets`.
-This will first cache down the results necessary for LVD, and then other baselines including MADSplit, CQR and DE.
-Note that it has to be run sequentially as the modifications for baselines depend on the base model.
+This will first cache down the results (embeddings, predictions, ...) necessary for LVD, and then those for other baselines including MADSplit, CQR and DE.
+Note that it has to be run sequentially as the some modifications depend on the base model.
 
-## 2. Preparing Other Datasets
+## 2. Prepare Other Datasets
 For all other datasets, run `python -m data.preprocess_small_datasets` to cache down DNN predictions and embeddings for LVD. 
 This should finish very fast.
 
@@ -62,13 +62,13 @@ As a result, we save down all results on all datasets and baselines before readi
 To fully replicate our experiment, you would need to run `python -m demos.run_all_experiments -t [task_id] -np [num_processes]`.
 `task_id` just defines what to cache, and `num_processes` is a number of your choice (how many queues of tasks to run simultaneously).
 
-If you have multiple gpus to leverage (during the training and inference using LVD), you can add `-pkw gpuid`. 
-As an example, if you run the tasks in 8 different queues, and you turn on this option, then the queue's id (0-7) mod 4 would be the gpu that queue is using.
+If you have multiple GPUs to leverage (during the training and inference using LVD), you can add `-pkw gpuid`. 
+As an example, if you run the tasks in 8 different queues/processes on a machine with 4 GPUs, and you turn on this option, then the queue's id mod 4 would be the GPU that queue is using.
 
 Here are a list of the task_ids:
-100. Run all baselines on the non-QM datasets, and the default LVD included in the main text.
-101. Like 100, but with all variants of LVD included in Appendix. 
+- 100: Run all baselines on the non-QM datasets, and the default LVD included in the main text.
+- 101: Like 100, but with all variants of LVD included in Appendix. 
      Note both 101 and 100 run all the baselines, and the results won't be run twice if you have already run task_id=100.
-200. Run the applicable baselines for QM datasets, and the default LVD included in the main text.
-201. Like 200, but with all variants of LVD included in Appendix. 
+- 200: Run the applicable baselines for QM datasets, and the default LVD included in the main text.
+- 201: Like 200, but with all variants of LVD included in Appendix. 
      
