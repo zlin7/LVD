@@ -72,3 +72,17 @@ Here are a list of the task_ids:
 - 200: Run the applicable baselines for QM datasets, and the default LVD included in the main text.
 - 201: Like 200, but with all variants of LVD included in Appendix. 
      
+## Bibtex
+```
+@inproceedings{NEURIPS2021_46c7cb50,
+ author = {Lin, Zhen and Trivedi, Shubhendu and Sun, Jimeng},
+ booktitle = {Advances in Neural Information Processing Systems},
+ editor = {M. Ranzato and A. Beygelzimer and Y. Dauphin and P.S. Liang and J. Wortman Vaughan},
+ pages = {8378--8391},
+ publisher = {Curran Associates, Inc.},
+ title = {Locally Valid and Discriminative Prediction Intervals for Deep Learning Models},
+ url = {https://proceedings.neurips.cc/paper_files/paper/2021/file/46c7cb50b373877fb2f8d5c4517bb969-Paper.pdf},
+ volume = {34},
+ year = {2021}
+}
+```
